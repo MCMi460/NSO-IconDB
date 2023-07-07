@@ -1,0 +1,1 @@
+nso-applet-api @ git+https://github.com/MCMi460/nso-applet-api

@@ -1,0 +1,20 @@
+# Files from Nintendo
+gifts/
+# ^^ FOR NOW
+
+# My tokens
+private*.*
+
+# MacOS
+.DS_Store
+
+# Python
+venv/
+__pycache__/
+build/
+*.egg-info/
+
+# Tests
+test*.*
+test*/
+t.*
