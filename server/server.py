@@ -4,7 +4,7 @@ import flask, typing, sqlite3
 app:flask.Flask = flask.Flask(__name__)
 
 local:bool = False
-port:str = '6677'
+port:int = 6677
 
 ###############
 ### Utility ###
