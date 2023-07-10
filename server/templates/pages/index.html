@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Documentation - Documentation Bulma Theme</title>
+  <title>NSO Icon-DB</title>
   {% include 'includes/header.html' %}
 </head>
 
@@ -33,6 +33,13 @@
             <h2 class="subtitle">Scraped Icon Categories:</h2>
           </div>
         </div>
+        {% if last %}
+        <div class="level-right">
+          <div class="level-item">
+            <h2 class="subtitle">Last scraped: {{ last }}</h2>
+          </div>
+        </div>
+        {% endif %}
       </div>
       {% for category in categories %}
         <details>
@@ -72,6 +79,9 @@
           <a href="https://bulma.io" target="_blank">
             <img src="https://bulma.io/images/made-with-bulma.png" alt="Made with Bulma" width="128" height="24">
           </a>
+          <div class="level-item">
+            <a href="https://github.com/BulmaTemplates/bulma-templates/blob/master/templates/documentation.html" target="_blank">And Documentation template</a>
+          </div>
         </p>
         <div class="level-item is-size-7">
           Scraping since Jul 6, 2023

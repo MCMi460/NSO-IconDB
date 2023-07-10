@@ -1,5 +1,5 @@
 # Made by Deltaion Lee (MCMi460) on Github
-import flask, typing, sqlite3
+import flask, typing, sqlite3, os, datetime, time
 
 app:flask.Flask = flask.Flask(__name__)
 
@@ -66,9 +66,14 @@ def get_categories() -> typing.List[Gift_Category]:
 #############
 @app.route('/') # Index
 def index() -> flask.Response:
+    last = None
+    if os.path.isfile('backend.txt'):
+        with open('backend.txt', 'r') as file:
+            last = str(datetime.timedelta(seconds = int(time.time() - float(file.read())))).split(':')
+            last = last[0] + 'h, ' + last[1] + 'm, ' + last[2] + 's ago'
     categories = []
 
-    response = flask.make_response(flask.render_template('pages/index.html', categories = get_categories()))
+    response = flask.make_response(flask.render_template('pages/index.html', categories = get_categories(), last = last))
     return response
 
 ##############

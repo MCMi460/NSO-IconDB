@@ -1,9 +1,10 @@
 # Made by Deltaion Lee (MCMi460) on Github
-import os, time, sqlite3
+import os, time, sqlite3, datetime
 from nso import NSOAppletAPI
 from private import headers
 
 while True:
+    print(datetime.datetime.now())
     with NSOAppletAPI(headers = headers) as api, open('C_CREATE.sql', 'r') as cFile, open('G_CREATE.sql', 'r') as gFile:
         # Get database creation files
         cSQL = cFile.read()
@@ -72,6 +73,9 @@ while True:
                 # Dump rest of category data
                 #with open(os.path.join(category_path, 'dump.%s.txt' % category.id), 'w+') as file:
                 #    file.write(str(category))
+
+    with open('backend.txt', 'w+') as file:
+        file.write(str(time.time()))
 
     # Wait an hour before retrying
     time.sleep(3600)
