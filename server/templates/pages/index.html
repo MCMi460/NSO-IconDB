@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Documentation - Documentation Bulma Theme</title>
+  {% include 'includes/header.html' %}
+</head>
+
+<body>
+  {% include 'includes/navigation.html' %}
+  <section class="hero is-medium">
+    <div class="hero-body has-text-centered">
+      <h1 class="title is-2">Nintendo Switch Icon Database</h1>
+      <div id="hero-input-group" class="field has-addons has-addons-centered">
+        <div class="control select">
+          <select class="input is-medium">
+            <option selected>All Icons</option>
+          </select>
+        </div>
+        <div class="control">
+          <a class="button is-medium is-primary">
+            <i class="fal fa-search"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="container is-max-desktop">
+    <section class="featured">
+      <div class="level">
+        <div class="level-left">
+          <div class="level-item">
+            <h2 class="subtitle">Scraped Icon Categories:</h2>
+          </div>
+        </div>
+      </div>
+      {% for category in categories %}
+        <details>
+          <summary>
+            <a>{{ category.name }}</a>
+          </summary>
+          {% for i in range(0, category.gifts |length, 4) %}
+            <div class="columns">
+            {% for gift in category.gifts[i:i+4] %}
+              <div class="column is-3">
+                <article>
+                  <figure class="image">
+                    <img src="/gifts/{{ category.key }}/{{ gift.id }}.webp" style="background-color:{{ category.key_color }}64;" />
+                  </figure>
+                  <h2 class="subtitle">{{ gift.name if gift.name else '%s %s' % (category.name, gift.tags.capitalize().replace(' ', '+')) }}</h2>
+                  <span class="tag is-rounded">{{ gift.tags }}</span>
+                </article>
+              </div>
+            {% endfor %}
+          </div>
+          {% endfor %}
+        </details>
+      {% endfor %}
+    </section>
+
+  </div>
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <div class="links">
+
+          <div class="level-item">
+            Built using <a href="https://pypi.org/project/nso-applet-api" target="_blank"><code>nso-applet-api</code></a>
+          </div>
+        </div><br>
+        <p>
+          <a href="https://bulma.io" target="_blank">
+            <img src="https://bulma.io/images/made-with-bulma.png" alt="Made with Bulma" width="128" height="24">
+          </a>
+        </p>
+        <div class="level-item is-size-7">
+          Scraping since Jul 6, 2023
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+/* #e60012 -- Nintendo HEX color */
+
+.hero {
+  background-color: #e63e4b;
+}
+.hero .title {
+  color: #fff;
+}
+
+.navbar {
+  background-color: #e60012;
+}
+.navbar-item {
+  color: #fff;
+}
+a.navbar-item:hover {
+  background-color: #fc6a75;
+  color: #fff;
+}
+.navbar-item img {
+  width: auto;
+  max-height: 3rem;
+}
+
+figure.image img {
+  border-radius: 10%;
+  max-width: 90%;
+  margin-left: 5%;
+}
+details div {
+  pointer-events: none;
+}
