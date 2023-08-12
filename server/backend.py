@@ -1,6 +1,7 @@
 # Made by Deltaion Lee (MCMi460) on Github
 import os, time, sqlite3, datetime, sys
 from nso import NSOAppletAPI
+from private import headers
 
 def main():
     print(datetime.datetime.now())
@@ -89,12 +90,8 @@ def getCurrentIcons():
     return icons
 
 if __name__ == '__main__':
-    from private import headers
     while True:
         main()
 
         # Wait an hour before retrying
         time.sleep(3600)
-else:
-    import importlib
-    headers = importlib.import_module('NSO-IconDB.server.private').headers
