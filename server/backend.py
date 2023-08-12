@@ -1,9 +1,8 @@
 # Made by Deltaion Lee (MCMi460) on Github
-import os, time, sqlite3, datetime
+import os, time, sqlite3, datetime, sys
 from nso import NSOAppletAPI
-from private import headers
 
-while True:
+def main():
     print(datetime.datetime.now())
     with NSOAppletAPI(headers = headers) as api, open('C_CREATE.sql', 'r') as cFile, open('G_CREATE.sql', 'r') as gFile:
         # Get database creation files
@@ -18,6 +17,9 @@ while True:
             os.makedirs(gifts_path)
         categoryDB_PATH = os.path.join(os.getcwd(), 'gifts/category.db')
         categoryDB_EXISTS = os.path.isfile(categoryDB_PATH)
+        with open('current.txt', 'w+') as file:
+            file.write('')
+
         with sqlite3.connect(categoryDB_PATH) as categoryCon: # Access database for category
             categoryCursor = categoryCon.cursor()
             if not categoryDB_EXISTS: # Init DB
@@ -39,6 +41,9 @@ while True:
 
                     # If not downloaded, download icon file (should always be a .webp)
                     for gift in category.gifts:
+                        with open('current.txt', 'a') as file:
+                            file.write('%s\n%s\n%s\n' % (category.name, gift.name if gift.name else ' '.join(gift.tags), '/gifts/%s/%s.webp' % (category.key, gift.id)))
+
                         gift_path = os.path.join(category_path, gift.id + '.webp')
                         if not os.path.isfile(gift_path):
                             with open(gift_path, 'wb+') as file:
@@ -77,5 +82,19 @@ while True:
     with open('backend.txt', 'w+') as file:
         file.write(str(time.time()))
 
-    # Wait an hour before retrying
-    time.sleep(3600)
+def getCurrentIcons():
+    with open('current.txt', 'r') as file:
+        lines = file.read().rstrip().split('\n')
+        icons = [ lines[n:n + 3] for n in range(0, len(lines), 3) ]
+    return icons
+
+if __name__ == '__main__':
+    from private import headers
+    while True:
+        main()
+
+        # Wait an hour before retrying
+        time.sleep(3600)
+else:
+    import importlib
+    headers = importlib.import_module('NSO-IconDB.server.private').headers
