@@ -31,25 +31,31 @@ class NSO_IconDB(commands.Cog):
         '''
         Shows the current Nintendo Switch Online icons!
         '''
-        embed=discord.Embed(
+        embed = discord.Embed(
             title = 'Nintendo Switch Online Icons Database',
             url = 'https://icondb.nsorpc.com/',
             description = 'Current Icons on the NSO Applet',
-            color = 0xe60012
+            color = 0xe60012,
         )
         embed.set_author(
             name = 'MCMi460',
             url = 'https://github.com/MCMi460',
-            icon_url = 'https://avatars.githubusercontent.com/u/32529306'
+            icon_url = 'https://avatars.githubusercontent.com/u/32529306',
         )
-        for icon in self.icons:
+        for icon in self.icons[:24]:
             embed.add_field(
                 name = '%s' % icon[1],
                 value = '[%s Icon](%s%s)' % (icon[0], self.url, icon[2]),
-                inline = True
+                inline = True,
+            )
+        if len(self.icons) >= 25:
+            embed.add_field(
+                name = 'And more!',
+                value = '[See more here](%s)' % self.url,
+                inline = True,
             )
         embed.set_footer(
-            text = 'Provided by nso-applet-api'
+            text = 'Provided by nso-applet-api',
         )
         await interaction.response.send_message(embed = embed)
 
