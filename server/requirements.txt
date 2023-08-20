@@ -1,3 +1,4 @@
 nso-applet-api
 flask
 gevent
+werkzeug

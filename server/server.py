@@ -1,5 +1,5 @@
 # Made by Deltaion Lee (MCMi460) on Github
-import flask, typing, sqlite3, os, datetime, time
+import flask, typing, sqlite3, os, datetime, time, werkzeug.security
 
 app:flask.Flask = flask.Flask(__name__)
 
@@ -90,7 +90,7 @@ def logo() -> flask.Response:
 
 @app.route('/gifts/<string:category>/<string:id>.webp') # Image
 def gifts_image(category:str, id:str) -> flask.Response:
-    return flask.send_file('gifts/%s/%s.webp' % (category, id))
+    return flask.send_from_directory(werkzeug.security.safe_join('gifts', category), id + '.webp')
 #    CSS     #
 @app.route('/css/style.css') # Logo
 def css() -> flask.Response:

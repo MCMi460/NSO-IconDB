@@ -20,4 +20,5 @@ test*/
 t.*
 
 # Other
-*.txt
+backend.txt
+current.txt
