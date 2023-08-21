@@ -108,7 +108,7 @@ class NSO_IconDB(commands.Cog):
 
     @discord.app_commands.command()
     @discord.app_commands.checks.cooldown(1, 10) # Try to prevent spamming of this command
-    async def icons(self, interaction: discord.Interaction):
+    async def icons(self, interaction: discord.Interaction, hidden:bool = False):
         '''
         Shows the current Nintendo Switch Online icons!
         '''
@@ -119,6 +119,7 @@ class NSO_IconDB(commands.Cog):
                 icons = len(self.icons),
                 embed_constructor = self.embed_constructor,
             ),
+            ephemeral = hidden,
         )
 
     @icons.error
