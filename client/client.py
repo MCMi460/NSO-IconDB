@@ -1,6 +1,9 @@
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
+def open_folder(folder):
+    os.system(('start' if os.name == 'nt' else 'open') + ' %s' % folder)
+
 def check_module(module) -> bool:
     try:
         globals()[module] = __import__(module)
@@ -131,3 +134,4 @@ with nso.NSOAppletAPI(headers = headers) as api, open('../server/C_CREATE.sql', 
                         file.write(api._get(category.image_url).content)
                 
 log('Done dumping all assets and data', color = nso.Color.GREEN)
+open_folder('rights')
