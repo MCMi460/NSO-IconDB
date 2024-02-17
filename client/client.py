@@ -1,3 +1,6 @@
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 def check_module(module) -> bool:
     try:
         globals()[module] = __import__(module)
@@ -41,10 +44,11 @@ if not safe_install('nso'):
     raise ImportError('failed to install nso-applet-api')
 try: import readline
 except ImportError: pass
-import re, shutil, webbrowser
+import re, shutil, webbrowser, os
 
 log = lambda *text, color = nso.Color.WHITE: nso.NSOAppletAPI._log(None, *text, color = color)
 
+clear()
 token_status = check_token()
 while token_status != 2:
     if token_status == 0:

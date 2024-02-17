@@ -30,14 +30,16 @@ This step can be repeated as many times as you wish.
 
 ### Running on Windows
 Press Win+R and type in `powershell.exe`. Press enter.  
-Enter the following:
+Enter the following (copy line-by-line):
 ```ps1
-py "$((New-Object -ComObject Shell.Application).NameSpace('shell:Downloads').Self.Path)\NSO-IconDB-main\NSO-IconDB-main\client\client.py"
+cd "$((New-Object -ComObject Shell.Application).NameSpace('shell:Downloads').Self.Path)\NSO-IconDB-main\NSO-IconDB-main\client\"
+py client.py
 ```
 
 ### Running on MacOS
 Press Cmd+Space and type in `Terminal.app`. Press enter.  
-Enter the following:
+Enter the following (copy line-by-line):
 ```sh
-python3 ~/Downloads/NSO-IconDB-main/client/client.py
+cd ~/Downloads/NSO-IconDB-main/client/
+python3 client.py
 ```
