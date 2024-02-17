@@ -6,19 +6,22 @@
   {% include 'includes/header.html' %}
 </head>
 
-<body>
+<body onload="javascript:load();">
   {% include 'includes/navigation.html' %}
   <section class="hero is-medium">
     <div class="hero-body has-text-centered">
       <h1 class="title is-2">Nintendo Switch Icon Database</h1>
       <div id="hero-input-group" class="field has-addons has-addons-centered">
         <div class="control select">
-          <select class="input is-medium">
-            <option selected>All Icons</option>
+          <select class="input is-medium" id="searchBox" autocomplete="off">
+            <option id="none">Home Page</option>
+            {% for option in options %}
+            <option id="{{ option.key }}">{{ option.name }}</option>
+            {% endfor %}
           </select>
         </div>
         <div class="control">
-          <a class="button is-medium is-primary">
+          <a class="button is-medium is-primary" href="javascript:search();">
             <i class="fal fa-search"></i>
           </a>
         </div>
@@ -30,7 +33,7 @@
       <div class="level">
         <div class="level-left">
           <div class="level-item">
-            <h2 class="subtitle">Scraped Icon Categories:</h2>
+            <!--<h2 class="subtitle">Scraped Icon Categories:</h2>-->
           </div>
         </div>
         {% if last %}
