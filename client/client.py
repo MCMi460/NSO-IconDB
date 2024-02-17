@@ -56,7 +56,7 @@ while token_status != 2:
         if response.lower().startswith('n'):
             quit()
         elif response.lower().startswith('y'):
-            URL = 'https://github.com/MCMi460/NSO-IconDB/blob/main/client/instructions.md'
+            URL = 'https://github.com/MCMi460/NSO-IconDB/blob/main/client/README.md'
             webbrowser.open(URL)
             print('If the URL has not opened in your browser already, please copy the link below:\n'
             + URL)
