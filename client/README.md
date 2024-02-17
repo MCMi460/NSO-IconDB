@@ -108,4 +108,6 @@ headers:dict = {
 ```
 
 ## Getting your icons
+Now, it should be as simple as [running the program](#running-the-program)!
 
+Please [join my Discord server](https://discord.gg/pwFASr2NKx) if you need assistance.
