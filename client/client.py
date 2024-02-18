@@ -72,8 +72,7 @@ while token_status != 2:
 
 from private import headers
 log('Passed all checks. Creating API object...', nso.Color.GREEN)
-with nso.NSOAppletAPI(headers = headers) as api, open('../server/C_CREATE.sql', 'r') as cFile, open('../server/G_CREATE.sql', 'r') as gFile:
-    api.timeout = None
+with nso.NSOAppletAPI(headers = headers, timeout = None) as api, open('../server/C_CREATE.sql', 'r') as cFile, open('../server/G_CREATE.sql', 'r') as gFile:
     cSQL = cFile.read()
     gSQL = gFile.read()
 
