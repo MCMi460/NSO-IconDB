@@ -1,1 +1,1 @@
-nso-applet-api>=0.0.30
+nso-applet-api>=0.0.31
